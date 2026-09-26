@@ -1,29 +1,14 @@
-import requests
+# List of popular web browsers
+browsers = [
+    "Google Chrome",
+    "Apple Safari",
+    "Microsoft Edge",
+    "Mozilla Firefox",
+    "Samsung Internet"
+]
 
-url = "https://open.er-api.com/v6/latest/USD"
+print("Top 5 Web Browsers")
+print("------------------------")
 
-try:
-    response = requests.get(url, timeout=10)
-    response.raise_for_status()
-
-    data = response.json()
-
-    # Get Bangladeshi Taka rate
-    bdt_rate = data["rates"]["BDT"]
-
-    print("Today's Dollar to Taka Exchange Rate")
-    print("------------------------------------")
-    print(f"1 USD = {bdt_rate:.2f} BDT")
-
-    # Example conversion
-    dollars = 100
-    taka = dollars * bdt_rate
-
-    print(f"${dollars} = {taka:.2f} BDT")
-
-except requests.exceptions.RequestException as error:
-    print("Error getting exchange rate:")
-    print(error)
-
-except KeyError:
-    print("Could not find BDT exchange rate.")
+for number, browser in enumerate(browsers, start=1):
+    print(f"{number}. {browser}")
